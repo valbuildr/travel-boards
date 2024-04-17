@@ -7,17 +7,17 @@ let overgroundBG;
 let otherServicesBG;
 
 
-let showWarningMessage = true;
+let showStarting = true;
 let showTube = false;
 let showOverground = false;
 let showOther = false;
 
 // p5js built-in function, preload
 function preload() {
-    fontReithSerifMedium = loadFont("fonts/reithSerif/BBCReithSerif_Md.ttf");
-    fontReithSansMedium = loadFont("fonts/reithSans/BBCReithSans_Md.ttf");
-    fontReithSansBold = loadFont("fonts/reithSans/BBCReithSans_Bd.ttf");
-    fontReithSansRegular = loadFont("fonts/reithSans/BBCReithSans_Rg.ttf");
+    fontReithSerifMedium = loadFont("../fonts/reithSerif/BBCReithSerif_Md.ttf");
+    fontReithSansMedium = loadFont("../fonts/reithSans/BBCReithSans_Md.ttf");
+    fontReithSansBold = loadFont("../fonts/reithSans/BBCReithSans_Bd.ttf");
+    fontReithSansRegular = loadFont("../fonts/reithSans/BBCReithSans_Rg.ttf");
     tubeBg = loadImage("TubeBG.png");
     overgroundBG = loadImage("OvergroundBG.png");
     otherServicesBG = loadImage("OtherBG.png");
@@ -30,20 +30,17 @@ function setup() {
 }
 
 // shows warning about data not being accurate
-function warningMessage() {
+function starting() {
     background(155);
 
     fill(0);
 
-    textFont(fontReithSansBold);
-    textSize(45);
-    text("The data shown is NOT accurate.", 150, 200);
     textFont(fontReithSansRegular);
     textSize(45);
-    text("To see the Tube board, click 'T'.", 170, 350);
-    text("To see the Overground board, click 'O'.", 170, 400);
-    text("To see the Other Services board (Elzabeth line, DLR, Trams, etc.), click 'S'.", 170, 450);
-    text("Animations coming soon!", 170, 800);
+    text("To see the Tube board, click 'T'.", 170, 200);
+    text("To see the Overground board, click 'O'.", 170, 250);
+    text("To see the Other Services board (Elzabeth line, DLR, Trams, etc.), click 'S'.", 170, 300);
+    text("Animations coming soon!", 170, 500);
 }
 
 // shows tube board
@@ -284,54 +281,60 @@ function otherServicesBoard() {
 
 // p5js built-in function, draw
 function draw() {
-    if (showWarningMessage) {
+    if (showStarting) {
         showTube = false;
         showOverground = false;
         showOther = false;
-        warningMessage();
+        starting();
     }
     if (showTube) {
-        showWarningMessage = false;
+        showStarting = false;
         showOverground = false;
         showOther = false;
         tubeBoard();
     }
     if (showOverground) {
-        showWarningMessage = false;
+        showStarting = false;
         showTube = false;
         showOther = false;
         overgroundBoard();
     }
     if (showOther) {
-        showWarningMessage = false;
+        showStarting = false;
         showTube = false;
         showOverground = false;
         otherServicesBoard()
     }
-    // tubeBoard();
-    // overgroundBoard();
-    // otherServicesBoard();
+    
+    fill(255, 255, 255, 150)
+    text("Data is not accurate!", 50, 1040)
 }
 
 // p5js built-in function, keyTyped
 function keyTyped() {
     if (key === 't') {
-        showWarningMessage = false;
+        showStarting = false;
         showOverground = false;
         showOther = false;
 
         showTube = true;
     } else if (key === 'o') {
-        showWarningMessage = false;
+        showStarting = false;
         showTube = false;
         showOther = false;
 
         showOverground = true;
     } else if (key === 's') {
-        showWarningMessage = false;
+        showStarting = false;
         showTube = false;
         showOverground = false;
 
         showOther = true;
+    } else if (key === '.') {
+        showTube = false;
+        showOverground = false;
+        showOther = false;
+
+        showStarting = true;
     }
 }
