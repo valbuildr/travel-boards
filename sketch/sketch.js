@@ -37,9 +37,9 @@ function starting() {
 
     textFont(fontReithSansRegular);
     textSize(45);
-    text("To see the Tube board, click 'T'.", 170, 200);
-    text("To see the Overground board, click 'O'.", 170, 250);
-    text("To see the Other Services board (Elzabeth line, DLR, Trams, etc.), click 'S'.", 170, 300);
+    text("To see the Tube board, click '1'.", 170, 200);
+    text("To see the Overground board, click '2'.", 170, 250);
+    text("To see the Other Services board (Elzabeth line, DLR, Trams, etc.), click '3'.", 170, 300);
     text("Animations coming soon!", 170, 500);
 }
 
@@ -312,19 +312,19 @@ function draw() {
 
 // p5js built-in function, keyTyped
 function keyTyped() {
-    if (key === 't') {
+    if (key === '1' || key == 't') {
         showStarting = false;
         showOverground = false;
         showOther = false;
 
         showTube = true;
-    } else if (key === 'o') {
+    } else if (key === '2' || key == 'o') {
         showStarting = false;
         showTube = false;
         showOther = false;
 
         showOverground = true;
-    } else if (key === 's') {
+    } else if (key === '3' || key == 's') {
         showStarting = false;
         showTube = false;
         showOverground = false;
